@@ -93,17 +93,22 @@ function gotColorsSuccess(response){
 
 function gotColorsFail(error){
     console.log(error);
-    if (cookies.get('sessiontoken', undefined)) {
-        alert('No log in information found');
-    window.location.href="'index.html";
-    }
-    console.log(cookies);
+    
     
 };
+function getCookie(){
+    let cookieFinder = Cookies.get('sessionToken');
+    if (cookieFinder == true){
+        document.getElementById('greeting').innerText = "You are logged in";
+    } else if(cookieFinder == undefined){
+        alert("You are not logged in ");
+        window.location.href="/index.html";
+    };
+}
 
 getColors();
 
-
+getCookie();
 
 
 
